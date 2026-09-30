@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PAEC - Portal de Asistencia y Emergencias Ciudadanas (Arica)</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="top-controls">
+        <button id="btn-modo" class="btn-control">🌙 Modo Oscuro</button>
+        <button id="btn-escape" class="btn-escape">Salir Rápido (Esc)</button>
+    </div>
+
+    <header class="header">
+        <h1>Asistencia Ciudadana Arica (PAEC)</h1>
+        <p>Encuentra ubicaciones en Google Maps y números locales de Arica en segundos</p>
+        
+        <div class="filtros-chips">
+            <button class="chip activo" data-filtro="todos">Todos</button>
+            <button class="chip" data-filtro="salud">Salud</button>
+            <button class="chip" data-filtro="seguridad">Seguridad</button>
+            <button class="chip" data-filtro="emergencia">Emergencia</button>
+            <button class="chip" data-filtro="municipalidad">Municipalidad</button>
+            <button class="chip" data-filtro="rescate">Rescate</button>
+        </div>
+
+        <div class="buscador-container">
+            <input type="text" id="buscador" placeholder="Busca por palabra clave (ej. samu, bomberos, comisaría, hospital)...">
+        </div>
+    </header>
+
+    <main class="contenedor-tarjetas" id="contenedor-tarjetas">
+        
+        <div class="tarjeta" data-tags="131 samu ambulancia urgencia medica salud" data-categoria="salud">
+            <div class="info">
+                <h2>SAMU (Ambulancia)</h2>
+                <span class="numero-badge">Tel: 131</span>
+                <p><strong>Qué hace:</strong> Ofrece atención médica prehospitalaria de urgencia y rescate vital ante accidentes graves, infartos o crisis médicas severas.</p>
+                <span class="categoria">Salud</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=SAMU+Hospital+Dr.+Juan+Noe+Arica" target="_blank" class="btn-mapa">📍 Ver en Maps</a>
+        </div>
+
+        <div class="tarjeta" data-tags="132 bomberos arica fuego incendio rescate" data-categoria="emergencia">
+            <div class="info">
+                <h2>Cuerpo de Bomberos de Arica</h2>
+                <span class="numero-badge">Tel: 132</span>
+                <p><strong>Qué hace:</strong> Controla y extingue incendios estructurales o forestales, realiza rescates vehiculares y atiende emergencias peligrosas.</p>
+                <span class="categoria">Emergencia</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Cuerpo+de+Bomberos+de+Arica" target="_blank" class="btn-mapa">📍 Ver en Maps</a>
+        </div>
+
+        <div class="tarjeta" data-tags="133 carabineros policia emergencia policial arica" data-categoria="seguridad">
+            <div class="info">
+                <h2>Carabineros de Chile</h2>
+                <span class="numero-badge">Tel: 133</span>
+                <p><strong>Qué hace:</strong> Central de emergencias policiales. Controla el orden público, la seguridad ciudadana y asiste ante delitos en curso.</p>
+                <span class="categoria">Seguridad</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Carabineros+de+Chile+Arica" target="_blank" class="btn-mapa">📍 Ver en Maps</a>
+        </div>
+
+        <div class="tarjeta" data-tags="134 pdi policia de investigaciones delito crimen" data-categoria="seguridad">
+            <div class="info">
+                <h2>Policía de Investigaciones (PDI)</h2>
+                <span class="numero-badge">Tel: 134</span>
+                <p><strong>Qué hace:</strong> Investiga delitos complejos, bandas organizadas, estafas y ejecuta órdenes judiciales y de búsqueda.</p>
+                <span class="categoria">Seguridad</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Policia+de+Investigaciones+PDI+Arica" target="_blank" class="btn-mapa">📍 Ver en Maps</a>
+        </div>
+
+        <div class="tarjeta" data-tags="1526 fono arica segura municipalidad patrullaje 24/7" data-categoria="seguridad">
+            <div class="info">
+                <h2>Fono Arica Segura</h2>
+                <span class="numero-badge">Tel: 1526</span>
+                <p><strong>Qué hace:</strong> Call Center municipal de seguridad y patrullaje preventivo disponible las 24 horas del día en la comuna.</p>
+                <span class="categoria">Seguridad Municipal</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Ilustre+Municipalidad+de+Arica" target="_blank" class="btn-mapa">📍 Ver en Maps</a>
+        </div>
+
+        <div class="tarjeta" data-tags="prefectura arica juan noe carabineros seguridad" data-categoria="seguridad">
+            <div class="info">
+                <h2>Prefectura Arica N°1</h2>
+                <span class="numero-badge">Tel: +56 58 245 8030</span>
+                <p><strong>Qué hace:</strong> Dirección policial superior (Juan Noé 799). Gestiona la estrategia y administración de las unidades de la región.</p>
+                <span class="categoria">Carabineros</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Juan+Noe+799+Arica" target="_blank" class="btn-mapa">📍 Ver en Maps</a>
+        </div>
+
+        <div class="tarjeta" data-tags="1 comisaria arica santa maria carabineros" data-categoria="seguridad">
+            <div class="info">
+                <h2>1ª Comisaría Arica</h2>
+                <span class="numero-badge">Tel: +56 58 245 8081</span>
+                <p><strong>Qué hace:</strong> Unidad policial base ubicada en Santa María 900 encargada del patrullaje y resguardo del sector céntrico.</p>
+                <span class="categoria">Carabineros</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Santa+Maria+900+Arica" target="_blank" class="btn-mapa">📍 Ver en Maps</a>
+        </div>
+
+        <div class="tarjeta" data-tags="3 comisaria arica carabineros" data-categoria="seguridad">
+            <div class="info">
+                <h2>3ª Comisaría Arica</h2>
+                <span class="numero-badge">Tel: +56 58 245 8132</span>
+                <p><strong>Qué hace:</strong> Unidad de servicio y resguardo policial enfocada en la prevención y atención directa a la comunidad.</p>
+                <span class="categoria">Carabineros</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=3+Comisaria+Carabineros+Arica" target="_blank" class="btn-mapa">📍 Ver en Maps</a>
+        </div>
+
+        <div class="tarjeta" data-tags="subcomisaria diego portales carabineros" data-categoria="seguridad">
+            <div class="info">
+                <h2>Subcomisaría Diego Portales</h2>
+                <span class="numero-badge">Tel: +56 58 245 8150</span>
+                <p><strong>Qué hace:</strong> Entrega atención policial especializada y patrullaje preventivo en el sector sur / Diego Portales.</p>
+                <span class="categoria">Carabineros</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Subcomisaria+Diego+Portales+Arica" target="_blank" class="btn-mapa">📍 Ver en Maps</a>
+        </div>
+
+        <div class="tarjeta" data-tags="subcomisaria chinchorro norte carabineros" data-categoria="seguridad">
+            <div class="info">
+                <h2>Subcomisaría Chinchorro Norte</h2>
+                <span class="numero-badge">Tel: +56 58 245 8145</span>
+                <p><strong>Qué hace:</strong> Resguarda la seguridad pública, el sector residencial norte y la zona costera de playas.</p>
+                <span class="categoria">Carabineros</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Subcomisaria+Chinchorro+Norte+Arica" target="_blank" class="btn-mapa">📍 Ver en Maps</a>
+        </div>
+
+        <div class="tarjeta" data-tags="tenencia chuckallane ruta internacional carabineros" data-categoria="seguridad">
+            <div class="info">
+                <h2>Tenencia Chuckallane</h2>
+                <span class="numero-badge">Tel: +56 58 245 8170</span>
+                <p><strong>Qué hace:</strong> Control policial y vigilancia permanente en la Ruta Internacional hacia la cordillera y fronteras.</p>
+                <span class="categoria">Carabineros</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Tenencia+Chuckallane+Arica" target="_blank" class="btn-mapa">📍 Ver en Maps</a>
+        </div>
+
+        <div class="tarjeta" data-tags="reten poconchile carabineros" data-categoria="seguridad">
+            <div class="info">
+                <h2>Retén Poconchile</h2>
+                <span class="numero-badge">Tel: +56 58 245 8160</span>
+                <p><strong>Qué hace:</strong> Control, vigilancia y asistencia policial en la zona de valle y poblados interiores.</p>
+                <span class="categoria">Carabineros</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Reten+Poconchile+Arica" target="_blank" class="btn-mapa">📍 Ver en Maps</a>
+        </div>
+
+        <div class="tarjeta" data-tags="reten central azapa carabineros" data-categoria="seguridad">
+            <div class="info">
+                <h2>Retén Central Azapa</h2>
+                <span class="numero-badge">Tel: +56 58 245 8190</span>
+                <p><strong>Qué hace:</strong> Brinda seguridad, control de tránsito y orden público en el Valle de Azapa.</p>
+                <span class="categoria">Carabineros</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Reten+Central+Azapa+Arica" target="_blank" class="btn-mapa">📍 Ver en Maps</a>
+        </div>
+
+        <div class="tarjeta" data-tags="reten san miguel de azapa carabineros" data-categoria="seguridad">
+            <div class="info">
+                <h2>Retén San Miguel de Azapa</h2>
+                <span class="numero-badge">Tel: +56 58 245 8210</span>
+                <p><strong>Qué hace:</strong> Unidad de patrullaje focalizada en el sector de San Miguel y comunidades agrícolas del valle.</p>
+                <span class="categoria">Carabineros</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Reten+San+Miguel+de+Azapa+Arica" target="_blank" class="btn-mapa">📍 Ver en Maps</a>
+        </div>
+
+        <div class="tarjeta" data-tags="reten visviri altiplano carabineros" data-categoria="seguridad">
+            <div class="info">
+                <h2>Retén Visviri</h2>
+                <span class="numero-badge">Tel: +56 58 245 8180</span>
+                <p><strong>Qué hace:</strong> Soberanía, control fronterizo y auxilio a pobladores en la zona altiplánica extrema.</p>
+                <span class="categoria">Carabineros</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Reten+Visviri+Arica" target="_blank" class="btn-mapa">📍 Ver en Maps</a>
+        </div>
+
+        <div class="tarjeta" data-tags="reten chapisca carabineros" data-categoria="seguridad">
+            <div class="info">
+                <h2>Retén Chapisca</h2>
+                <span class="numero-badge">Tel: +56 58 245 8220</span>
+                <p><strong>Qué hace:</strong> Vigilancia rural y apoyo a la comunidad en zonas interiores de la región.</p>
+                <span class="categoria">Carabineros</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Reten+Chapisca+Arica" target="_blank" class="btn-mapa">📍 Ver en Maps</a>
+        </div>
+
+        <div class="tarjeta" data-tags="reten copaquilla carabineros" data-categoria="seguridad">
+            <div class="info">
+                <h2>Retén Copaquilla</h2>
+                <span class="numero-badge">Tel: +56 58 245 8230</span>
+                <p><strong>Qué hace:</strong> Resguardo y presencia policial en la zona precordillerana de Arica y Parinacota.</p>
+                <span class="categoria">Carabineros</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Reten+Copaquilla+Arica" target="_blank" class="btn-mapa">📍 Ver en Maps</a>
+        </div>
+
+        <div class="tarjeta" data-tags="consultorio medico institucional carabineros arica salud" data-categoria="salud">
+            <div class="info">
+                <h2>Consultorio Institucional Carabineros</h2>
+                <span class="numero-badge">Tel: +56 58 244 5007</span>
+                <p><strong>Qué hace:</strong> Ofrece atención médica ambulatoria y prestaciones de salud para el personal institucional y cargas.</p>
+                <span class="categoria">Salud</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Consultorio+Carabineros+Arica" target="_blank" class="btn-mapa">📍 Ver en Maps</a>
+        </div>
+
+        <div class="tarjeta" data-tags="comandancia general cuerpo de bomberos arica" data-categoria="emergencia">
+            <div class="info">
+                <h2>Comandancia General de Bomberos</h2>
+                <span class="numero-badge">Tel: +56 58 224 5000</span>
+                <p><strong>Qué hace:</strong> Oficina central administrativa y jefatura operativa del Cuerpo de Bomberos de Arica.</p>
+                <span class="categoria">Bomberos</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Comandancia+Cuerpo+de+Bomberos+de+Arica" target="_blank" class="btn-mapa">📍 Ver en Maps</a>
+        </div>
+
+        <div class="tarjeta" data-tags="central de operaciones guardia de bomberos arica" data-categoria="emergencia">
+            <div class="info">
+                <h2>Central de Operaciones Bomberos</h2>
+                <span class="numero-badge">Tel: +56 58 225 7654</span>
+                <p><strong>Qué hace:</strong> Guardia permanente encargada de recibir avisos de emergencia y coordinar la salida de carros bomba.</p>
+                <span class="categoria">Bomberos</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Central+Operaciones+Bomberos+Arica" target="_blank" class="btn-mapa">📍 Ver en Maps</a>
+        </div>
+
+        <div class="tarjeta" data-tags="cuarta quinta compañia de bomberos arica" data-categoria="emergencia">
+            <div class="info">
+                <h2>4ª / 5ª Compañía de Bomberos</h2>
+                <span class="numero-badge">Tel: +56 58 226 2896</span>
+                <p><strong>Qué hace:</strong> Cuartel de servicio operativo para control de incendios y apoyo en rescates técnicos.</p>
+                <span class="categoria">Bomberos</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Quinta+Compania+de+Bomberos+Arica" target="_blank" class="btn-mapa">📍 Ver en Maps</a>
+        </div>
+
+        <div class="tarjeta" data-tags="sexta compañia de bomberos arica sector sur" data-categoria="emergencia">
+            <div class="info">
+                <h2>6ª Compañía de Bomberos</h2>
+                <span class="numero-badge">Tel: +56 58 221 1552</span>
+                <p><strong>Qué hace:</strong> Cobertura rápida y combate de incendios ubicada estratégicamente en el Sector Sur de Arica.</p>
+                <span class="categoria">Bomberos</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Sexta+Compania+de+Bomberos+Arica" target="_blank" class="btn-mapa">📍 Ver en Maps</a>
+        </div>
+
+        <div class="tarjeta" data-tags="tercera compañia de bomberos arica" data-categoria="emergencia">
+            <div class="info">
+                <h2>3ª Compañía de Bomberos Arica</h2>
+                <span class="numero-badge">Tel: +56 58 251 1400</span>
+                <p><strong>Qué hace:</strong> Cuartel operativo especializado en la extinción de fuegos y control de emergencias.</p>
+                <span class="categoria">Bomberos</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Tercera+Compania+de+Bomberos+Arica" target="_blank" class="btn-mapa">📍 Ver en Maps</a>
+        </div>
+
+        <div class="tarjeta" data-tags="segunda compañia de bomberos arica" data-categoria="emergencia">
+            <div class="info">
+                <h2>2ª Compañía de Bomberos Arica</h2>
+                <span class="numero-badge">Tel: +56 58 223 2011</span>
+                <p><strong>Qué hace:</strong> Unidad operativa de respuesta rápida ante siniestros y emergencias de la ciudad.</p>
+                <span class="categoria">Bomberos</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Segunda+Compania+de+Bomberos+Arica" target="_blank" class="btn-mapa">📍 Ver en Maps</a>
+        </div>
+
+        <div class="tarjeta" data-tags="primera compañia de bomberos arica" data-categoria="emergencia">
+            <div class="info">
+                <h2>1ª Compañía de Bomberos Arica</h2>
+                <span class="numero-badge">Tel: +56 58 223 1122</span>
+                <p><strong>Qué hace:</strong> Cuartel histórico y operativo de primera respuesta ante incendios estructurales.</p>
+                <span class="categoria">Bomberos</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Primera+Compania+de+Bomberos+Arica" target="_blank" class="btn-mapa">📍 Ver en Maps</a>
+        </div>
+
+        <div class="tarjeta" data-tags="hospital regional de arica juan noe crevani mesa central" data-categoria="salud">
+            <div class="info">
+                <h2>Hospital Dr. Juan Noé Crevani</h2>
+                <span class="numero-badge">Tel: +56 58 220 4592</span>
+                <p><strong>Qué hace:</strong> Mesa central del principal centro asistencial público de la región de Arica y Parinacota.</p>
+                <span class="categoria">Salud</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Hospital+Dr.+Juan+Noe+Crevani+Arica" target="_blank" class="btn-mapa">📍 Ver en Maps</a>
+        </div>
+
+        <div class="tarjeta" data-tags="urgencias hospital regional juan noe arica urgencia" data-categoria="salud">
+            <div class="info">
+                <h2>Urgencias Hospital Juan Noé</h2>
+                <span class="numero-badge">Tel: +56 58 220 4000</span>
+                <p><strong>Qué hace:</strong> Unidad de emergencia hospitalaria de alta complejidad para pacientes con riesgo vital.</p>
+                <span class="categoria">Salud</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Urgencias+Hospital+Juan+Noe+Arica" target="_blank" class="btn-mapa">📍 Ver en Maps</a>
+        </div>
+
+        <div class="tarjeta" data-tags="cesfam amador neghme arica salud primaria" data-categoria="salud">
+            <div class="info">
+                <h2>CESFAM Dr. Amador Neghme</h2>
+                <span class="numero-badge">Tel: +56 58 225 1271</span>
+                <p><strong>Qué hace:</strong> Centro de Salud Familiar que ofrece atención primaria, controles médicos y policlínico.</p>
+                <span class="categoria">Salud</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=CESFAM+Dr.+Amador+Neghme+Arica" target="_blank" class="btn-mapa">📍 Ver en Maps</a>
+        </div>
+
+        <div class="tarjeta" data-tags="cesfam remigio sica arica salud primaria" data-categoria="salud">
+            <div class="info">
+                <h2>CESFAM Remigio Sica</h2>
+                <span class="numero-badge">Tel: +56 58 225 2125</span>
+                <p><strong>Qué hace:</strong> Brinda atención primaria de salud, vacunatorio, entrega de medicamentos y medicina preventiva.</p>
+                <span class="categoria">Salud</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=CESFAM+Remigio+Sica+Arica" target="_blank" class="btn-mapa">📍 Ver en Maps</a>
+        </div>
+
+        <div class="tarjeta" data-tags="cesfam iris veliz arica salud primaria" data-categoria="salud">
+            <div class="info">
+                <h2>CESFAM Iris Veliz</h2>
+                <span class="numero-badge">Tel: +56 58 222 1183</span>
+                <p><strong>Qué hace:</strong> Centro de salud enfocado en la atención familiar, morbilidad y programas de salud preventiva.</p>
+                <span class="categoria">Salud</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=CESFAM+Iris+Veliz+Arica" target="_blank" class="btn-mapa">📍 Ver en Maps</a>
+        </div>
+
+        <div class="tarjeta" data-tags="cesfam victor bertin soto arica salud primaria" data-categoria="salud">
+            <div class="info">
+                <h2>CESFAM Víctor Bertín Soto</h2>
+                <span class="numero-badge">Tel: +56 58 250 2100</span>
+                <p><strong>Qué hace:</strong> Ofrece atención médica primaria, consultas nutricionales, dentales y programas comunitarios de salud.</p>
+                <span class="categoria">Salud</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=CESFAM+Victor+Bertin+Soto+Arica" target="_blank" class="btn-mapa">📍 Ver en Maps</a>
+        </div>
+
+        <div class="tarjeta" data-tags="cesfam rosa mistica arica salud primaria" data-categoria="salud">
+            <div class="info">
+                <h2>CESFAM Rosa Mística</h2>
+                <span class="numero-badge">Tel: +56 58 250 2300</span>
+                <p><strong>Qué hace:</strong> Centro de Salud Familiar que otorga atenciones de medicina general, matronería y farmacia.</p>
+                <span class="categoria">Salud</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=CESFAM+Rosa+Mistica+Arica" target="_blank" class="btn-mapa">📍 Ver en Maps</a>
+        </div>
+
+        <div class="tarjeta" data-tags="sapu consultorio sur menton arica urgencia baja complejidad" data-categoria="salud">
+            <div class="info">
+                <h2>SAPU Consultorio Sur / Mentón</h2>
+                <span class="numero-badge">Tel: +56 58 248 1200</span>
+                <p><strong>Qué hace:</strong> Servicio de Atención Primaria de Urgencia para resolver consultas médicas de menor complejidad.</p>
+                <span class="categoria">Salud</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=SAPU+Consultorio+Sur+Arica" target="_blank" class="btn-mapa">📍 Ver en Maps</a>
+        </div>
+
+        <div class="tarjeta" data-tags="sar alborada arica servicio alta resolutividad urgencia" data-categoria="salud">
+            <div class="info">
+                <h2>SAR Alborada</h2>
+                <span class="numero-badge">Tel: +56 58 222 5566</span>
+                <p><strong>Qué hace:</strong> Servicio de Alta Resolutividad con capacidad para realizar exámenes de laboratorio y rayos X.</p>
+                <span class="categoria">Salud</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=SAR+Alborada+Arica" target="_blank" class="btn-mapa">📍 Ver en Maps</a>
+        </div>
+
+        <div class="tarjeta" data-tags="salud responde minsal orientacion medica 24 7" data-categoria="salud">
+            <div class="info">
+                <h2>Salud Responde (MINSAL)</h2>
+                <span class="numero-badge">Tel: 600 360 7777</span>
+                <p><strong>Qué hace:</strong> Entrega orientación médica telefónica gratuita las 24 horas y guía sobre turnos de farmacias.</p>
+                <span class="categoria">Salud</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=MINSAL+Santiago" target="_blank" class="btn-mapa">📍 Ver en Maps</a>
+        </div>
+
+        <div class="tarjeta" data-tags="fonasa consultas cobertura bonos salud" data-categoria="salud">
+            <div class="info">
+                <h2>Fonasa</h2>
+                <span class="numero-badge">Tel: 600 600 3700</span>
+                <p><strong>Qué hace:</strong> Responde dudas sobre coberturas de salud, compra de bonos y afiliación al sistema público.</p>
+                <span class="categoria">Salud</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Fonasa+Arica" target="_blank" class="btn-mapa">📍 Ver en Maps</a>
+        </div>
+
+        <div class="tarjeta" data-tags="prevencion suicidio linea 4141 salud mental crisis" data-categoria="salud">
+            <div class="info">
+                <h2>Línea Prevención del Suicidio</h2>
+                <span class="numero-badge">Tel: *4141</span>
+                <p><strong>Qué hace:</strong> Ofrece contención psicológica y apoyo emocional gratuito y confidencial 24/7 en situaciones de crisis.</p>
+                <span class="categoria">Salud Mental</span>
+            </div>
+            <span class="badge-virtual">Atención Telefónica</span>
+        </div>
+
+        <div class="tarjeta" data-tags="fonosida prevencion consejeria vih salud" data-categoria="salud">
+            <div class="info">
+                <h2>Fonosida</h2>
+                <span class="numero-badge">Tel: 800 378 800</span>
+                <p><strong>Qué hace:</strong> Brinda consejería confidencial, orientación médica y prevención respecto al VIH y ETS.</p>
+                <span class="categoria">Salud</span>
+            </div>
+            <span class="badge-virtual">Atención Telefónica</span>
+        </div>
+
+        <div class="tarjeta" data-tags="senda drogas alcohol orientacion tratamiento arica" data-categoria="salud">
+            <div class="info">
+                <h2>SENDA - Fono Drogas</h2>
+                <span class="numero-badge">Tel: 1412</span>
+                <p><strong>Qué hace:</strong> Entrega orientación y derivación gratuita para tratamientos de prevención por consumo de alcohol y drogas.</p>
+                <span class="categoria">Apoyo Social</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=SENDA+Arica" target="_blank" class="btn-mapa">📍 Ver en Maps</a>
+        </div>
+
+        <div class="tarjeta" data-tags="violencia contra la mujer sernameg orientacion 1455" data-categoria="seguridad">
+            <div class="info">
+                <h2>Fono Orientación Violencia contra la Mujer</h2>
+                <span class="numero-badge">Tel: 1455</span>
+                <p><strong>Qué hace:</strong> Ofrece ayuda, contención y asesoría legal integral a mujeres que enfrentan situaciones de violencia (SernamEG).</p>
+                <span class="categoria">Apoyo Social</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=SernamEG+Arica" target="_blank" class="btn-mapa">📍 Ver en Maps</a>
+        </div>
+
+        <div class="tarjeta" data-tags="ilustre municipalidad de arica ima mesa central" data-categoria="municipalidad">
+            <div class="info">
+                <h2>Ilustre Municipalidad de Arica</h2>
+                <span class="numero-badge">Tel: +56 58 220 6004</span>
+                <p><strong>Qué hace:</strong> Mesa central de trámites, informaciones y gestión administrativa de la comuna de Arica (IMA).</p>
+                <span class="categoria">Municipalidad</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Ilustre+Municipalidad+de+Arica" target="_blank" class="btn-mapa">📍 Ver en Maps</a>
+        </div>
+
+        <div class="tarjeta" data-tags="direccion de transito municipal licencias permisos de circulacion arica" data-categoria="municipalidad">
+            <div class="info">
+                <h2>Dirección de Tránsito Municipal</h2>
+                <span class="numero-badge">Tel: +56 58 220 6111</span>
+                <p><strong>Qué hace:</strong> Gestiona la obtención de licencias de conducir, permisos de circulación y señalización vial.</p>
+                <span class="categoria">Municipalidad</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Direccion+de+Transito+Municipal+Arica" target="_blank" class="btn-mapa">📍 Ver en Maps</a>
+        </div>
+
+        <div class="tarjeta" data-tags="aseo ornato y alumbrado publico municipal arica" data-categoria="municipalidad">
+            <div class="info">
+                <h2>Aseo, Ornato y Alumbrado Público</h2>
+                <span class="numero-badge">Tel: +56 58 220 6040</span>
+                <p><strong>Qué hace:</strong> Gestiona solicitudes y reportes sobre limpieza de calles, mantención de plazas y luminarias.</p>
+                <span class="categoria">Municipalidad</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Municipalidad+de+Arica+Aseo+y+Ornato" target="_blank" class="btn-mapa">📍 Ver en Maps</a>
+        </div>
+
+        <div class="tarjeta" data-tags="delegacion presidencial regional de arica y parinacota" data-categoria="municipalidad">
+            <div class="info">
+                <h2>Delegación Presidencial Regional</h2>
+                <span class="numero-badge">Tel: +56 58 223 8210</span>
+                <p><strong>Qué hace:</strong> Oficina del gobierno central encargada de coordinar la seguridad pública en Arica y Parinacota.</p>
+                <span class="categoria">Gobierno</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Delegacion+Presidencial+Regional+de+Arica" target="_blank" class="btn-mapa">📍 Ver en Maps</a>
+        </div>
+
+        <div class="tarjeta" data-tags="seremi de salud arica y parinacota" data-categoria="salud">
+            <div class="info">
+                <h2>SEREMI de Salud Arica y Parinacota</h2>
+                <span class="numero-badge">Tel: +56 58 225 2410</span>
+                <p><strong>Qué hace:</strong> Realiza fiscalizaciones sanitarias de locales, control de alimentos y normativas de salud pública.</p>
+                <span class="categoria">Salud Pública</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=SEREMI+de+Salud+Arica+y+Parinacota" target="_blank" class="btn-mapa">📍 Ver en Maps</a>
+        </div>
+
+        <div class="tarjeta" data-tags="direccion del trabajo inspeccion provincial arica" data-categoria="municipalidad">
+            <div class="info">
+                <h2>Dirección del Trabajo (Inspección)</h2>
+                <span class="numero-badge">Tel: 600 450 4000</span>
+                <p><strong>Qué hace:</strong> Fiscaliza el cumplimiento de la normativa laboral y ofrece asesoría y mediación a trabajadores.</p>
+                <span class="categoria">Servicios Públicos</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Direccion+del+Trabajo+Arica" target="_blank" class="btn-mapa">📍 Ver en Maps</a>
+        </div>
+
+        <div class="tarjeta" data-tags="sag servicio agricola y ganadero oficina arica" data-categoria="municipalidad">
+            <div class="info">
+                <h2>SAG - Oficina Arica</h2>
+                <span class="numero-badge">Tel: +56 58 224 3626</span>
+                <p><strong>Qué hace:</strong> Protege el patrimonio fito y zoosanitario y controla el ingreso de productos silvoagropecuarios.</p>
+                <span class="categoria">Servicios Públicos</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=SAG+Oficina+Arica" target="_blank" class="btn-mapa">📍 Ver en Maps</a>
+        </div>
+
+        <div class="tarjeta" data-tags="sag oficina valle de lluta arica" data-categoria="municipalidad">
+            <div class="info">
+                <h2>SAG - Valle de Lluta</h2>
+                <span class="numero-badge">Tel: +56 58 225 1910</span>
+                <p><strong>Qué hace:</strong> Control agrícola, fiscalización de plagas y resguardo sanitario en la zona rural del Valle de Lluta.</p>
+                <span class="categoria">Servicios Públicos</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=SAG+Valle+de+Lluta" target="_blank" class="btn-mapa">📍 Ver en Maps</a>
+        </div>
+
+        <div class="tarjeta" data-tags="complejo fronterizo chacalluta limite con peru arica" data-categoria="seguridad">
+            <div class="info">
+                <h2>Complejo Fronterizo Chacalluta</h2>
+                <span class="numero-badge">Tel: +56 58 225 2333</span>
+                <p><strong>Qué hace:</strong> Control migratorio, aduanero y policial en el límite internacional norte con el Perú.</p>
+                <span class="categoria">Frontera</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Complejo+Fronterizo+Chacalluta+Arica" target="_blank" class="btn-mapa">📍 Ver en Maps</a>
+        </div>
+
+        <div class="tarjeta" data-tags="complejo fronterizo chungara limite con bolivia arica" data-categoria="seguridad">
+            <div class="info">
+                <h2>Complejo Fronterizo Chungará</h2>
+                <span class="numero-badge">Tel: +56 58 220 5700</span>
+                <p><strong>Qué hace:</strong> Control migratorio y fiscalización de transporte en el paso fronterizo de altura hacia Bolivia.</p>
+                <span class="categoria">Frontera</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Complejo+Fronterizo+Chungara" target="_blank" class="btn-mapa">📍 Ver en Maps</a>
+        </div>
+
+        <div class="tarjeta" data-tags="servel servicio electoral oficina regional arica" data-categoria="municipalidad">
+            <div class="info">
+                <h2>SERVEL - Oficina Regional Arica</h2>
+                <span class="numero-badge">Tel: 600 600 0166</span>
+                <p><strong>Qué hace:</strong> Administra los registros electorales, cambios de domicilio y organización de procesos de votación.</p>
+                <span class="categoria">Servicios Públicos</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=SERVEL+Arica" target="_blank" class="btn-mapa">📍 Ver en Maps</a>
+        </div>
+
+        <div class="tarjeta" data-tags="corporacion de asistencia judicial asesoria legal gratuita arica" data-categoria="municipalidad">
+            <div class="info">
+                <h2>Corporación de Asistencia Judicial</h2>
+                <span class="numero-badge">Tel: 800 366 400</span>
+                <p><strong>Qué hace:</strong> Proporciona orientación y asesoría jurídica gratuita a personas de escasos recursos económicos.</p>
+                <span class="categoria">Apoyo Social</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Corporacion+de+Asistencia+Judicial+Arica" target="_blank" class="btn-mapa">📍 Ver en Maps</a>
+        </div>
+
+        <div class="tarjeta" data-tags="aguas del altiplano fugas cortes alcantarillado arica agua" data-categoria="emergencia">
+            <div class="info">
+                <h2>Aguas del Altiplano</h2>
+                <span class="numero-badge">Tel: 600 600 2233</span>
+                <p><strong>Qué hace:</strong> Atiende reportes por fugas de agua potable, roturas de matrices, aniegos y problemas de alcantarillado.</p>
+                <span class="categoria">Servicios Básicos</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Aguas+del+Altiplano+Arica" target="_blank" class="btn-mapa">📍 Ver en Maps</a>
+        </div>
+
+        <div class="tarjeta" data-tags="cge compañia general de electricidad cortes de luz postes caidos arica" data-categoria="emergencia">
+            <div class="info">
+                <h2>CGE - Electricidad</h2>
+                <span class="numero-badge">Tel: 800 800 696</span>
+                <p><strong>Qué hace:</strong> Registra y repara cortes imprevistos de suministro eléctrico, problemas en la red y postes caídos.</p>
+                <span class="categoria">Servicios Básicos</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=CGE+Sucursal+Arica" target="_blank" class="btn-mapa">📍 Ver en Maps</a>
+        </div>
+
+        <div class="tarjeta" data-tags="concesionaria ruta arica la serena asistencia vial ruta 5 norte" data-categoria="emergencia">
+            <div class="info">
+                <h2>Ruta Arica-La Serena (Concesionaria)</h2>
+                <span class="numero-badge">Tel: 800 201 000</span>
+                <p><strong>Qué hace:</strong> Ofrece asistencia vial en ruta, grúas y auxilio mecánico ante emergencias en la Ruta 5 Norte.</p>
+                <span class="categoria">Conectividad</span>
+            </div>
+            <span class="badge-virtual">Asistencia en Ruta</span>
+        </div>
+
+        <div class="tarjeta" data-tags="terminal rodoviario de arica buses interurbanos" data-categoria="municipalidad">
+            <div class="info">
+                <h2>Terminal Rodoviario de Arica</h2>
+                <span class="numero-badge">Tel: +56 58 258 3600</span>
+                <p><strong>Qué hace:</strong> Entrega información sobre salidas de buses interurbanos, destinos nacionales y horarios.</p>
+                <span class="categoria">Conectividad</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Terminal+Rodoviario+de+Arica" target="_blank" class="btn-mapa">📍 Ver en Maps</a>
+        </div>
+
+        <div class="tarjeta" data-tags="empresa portuaria arica epa puerto" data-categoria="municipalidad">
+            <div class="info">
+                <h2>Empresa Portuaria Arica (EPA)</h2>
+                <span class="numero-badge">Tel: +56 58 223 1000</span>
+                <p><strong>Qué hace:</strong> Administra y coordina las operaciones logísticas y portuarias del puerto de Arica.</p>
+                <span class="categoria">Conectividad</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Empresa+Portuaria+Arica+EPA" target="_blank" class="btn-mapa">📍 Ver en Maps</a>
+        </div>
+
+        <div class="tarjeta" data-tags="subtel reclamos fallas telecomunicaciones internet telefonia" data-categoria="municipalidad">
+            <div class="info">
+                <h2>Subtel</h2>
+                <span class="numero-badge">Tel: 800 600 262</span>
+                <p><strong>Qué hace:</strong> Canaliza reclamos ciudadanos ante fallas masivas de servicios de telefonía e internet.</p>
+                <span class="categoria">Servicios Públicos</span>
+            </div>
+            <span class="badge-virtual">Atención Nacional</span>
+        </div>
+
+        <div class="tarjeta" data-tags="direccion meteorologica de chile alertas clima arica" data-categoria="emergencia">
+            <div class="info">
+                <h2>Dirección Meteorológica de Chile</h2>
+                <span class="numero-badge">Tel: 2 2692 1000</span>
+                <p><strong>Qué hace:</strong> Emite boletines meteorológicos oficiales, pronósticos del tiempo y alertas tempranas por clima.</p>
+                <span class="categoria">Emergencia</span>
+            </div>
+            <span class="badge-virtual">Atención Nacional</span>
+        </div>
+
+        <div class="tarjeta" data-tags="senapred arica y parinacota emergencias desastres naturales" data-categoria="emergencia">
+            <div class="info">
+                <h2>SENAPRED Arica y Parinacota</h2>
+                <span class="numero-badge">Tel: 600 586 7700</span>
+                <p><strong>Qué hace:</strong> Coordina el sistema de prevención y respuesta ante catástrofes, sismos, maremotos y desastres.</p>
+                <span class="categoria">Emergencia</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=SENAPRED+Arica" target="_blank" class="btn-mapa">📍 Ver en Maps</a>
+        </div>
+
+        <div class="tarjeta" data-tags="sernageomin alertas volcanicas geologicas arica" data-categoria="emergencia">
+            <div class="info">
+                <h2>Sernageomin</h2>
+                <span class="numero-badge">Tel: 600 822 0822</span>
+                <p><strong>Qué hace:</strong> Monitorea y emite alertas sobre riesgos geológicos, actividad volcánica y seguridad minera.</p>
+                <span class="categoria">Emergencia</span>
+            </div>
+            <span class="badge-virtual">Atención Nacional</span>
+        </div>
+
+        <div class="tarjeta" data-tags="bancoestado bloqueo cuentas tarjetas emergencia" data-categoria="emergencia">
+            <div class="info">
+                <h2>BancoEstado</h2>
+                <span class="numero-badge">Tel: 800 802 020</span>
+                <p><strong>Qué hace:</strong> Permite realizar el bloqueo inmediato de cuentas y tarjetas bancarias en caso de robo o extravío.</p>
+                <span class="categoria">Banca</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=BancoEstado+Arica" target="_blank" class="btn-mapa">📍 Ver en Maps</a>
+        </div>
+
+        <div class="tarjeta" data-tags="137 autoridad maritima directemar emergencias playas costa puerto arica" data-categoria="rescate">
+            <div class="info">
+                <h2>Autoridad Marítima (Directemar)</h2>
+                <span class="numero-badge">Tel: 137</span>
+                <p><strong>Qué hace:</strong> Atiende emergencias de rescate en playas, bordes costeros, mar y puerto de Arica.</p>
+                <span class="categoria">Rescate</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Gobernacion+Maritima+de+Arica" target="_blank" class="btn-mapa">📍 Ver en Maps</a>
+        </div>
+
+        <div class="tarjeta" data-tags="130 conaf arica control informacion incendios forestales" data-categoria="rescate">
+            <div class="info">
+                <h2>CONAF Arica</h2>
+                <span class="numero-badge">Tel: 130</span>
+                <p><strong>Qué hace:</strong> Recibe reportes y coordina el combate de incendios forestales en zonas rurales y de vegetación.</p>
+                <span class="categoria">Emergencia</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=CONAF+Arica" target="_blank" class="btn-mapa">📍 Ver en Maps</a>
+        </div>
+
+        <div class="tarjeta" data-tags="136 socorro andino busqueda rescate cerros cordillera" data-categoria="rescate">
+            <div class="info">
+                <h2>Socorro Andino</h2>
+                <span class="numero-badge">Tel: 136</span>
+                <p><strong>Qué hace:</strong> Organiza labores especializadas de búsqueda y rescate de personas extraviadas en cerros o cordillera.</p>
+                <span class="categoria">Rescate</span>
+            </div>
+            <span class="badge-virtual">Rescate en Terreno</span>
+        </div>
+
+        <div class="tarjeta" data-tags="135 fono drogas carabineros denuncias anonimas" data-categoria="seguridad">
+            <div class="info">
+                <h2>Fono Drogas Carabineros</h2>
+                <span class="numero-badge">Tel: 135</span>
+                <p><strong>Qué hace:</strong> Recibe información y denuncias de manera completamente anónima sobre microtráfico y tráfico de drogas.</p>
+                <span class="categoria">Seguridad</span>
+            </div>
+            <span class="badge-virtual">Línea Anónima</span>
+        </div>
+
+        <div class="tarjeta" data-tags="147 fono ninos carabineros proteccion de menores infancia" data-categoria="seguridad">
+            <div class="info">
+                <h2>Fono Niños Carabineros</h2>
+                <span class="numero-badge">Tel: 147</span>
+                <p><strong>Qué hace:</strong> Canal especializado en la protección, orientación y recepción de denuncias por vulneración a menores.</p>
+                <span class="categoria">Apoyo Social</span>
+            </div>
+            <span class="badge-virtual">Atención Especializada</span>
+        </div>
+
+        <div class="tarjeta" data-tags="149 fono familia carabineros violencia intrafamiliar vif" data-categoria="seguridad">
+            <div class="info">
+                <h2>Fono Familia Carabineros</h2>
+                <span class="numero-badge">Tel: 149</span>
+                <p><strong>Qué hace:</strong> Entrega asesoría, orientación y apoyo especializado ante situaciones de Violencia Intrafamiliar (VIF).</p>
+                <span class="categoria">Seguridad</span>
+            </div>
+            <span class="badge-virtual">Atención Especializada</span>
+        </div>
+
+        <div class="tarjeta" data-tags="800400035 fono mayor apoyo orientacion adultos mayores senama" data-categoria="salud">
+            <div class="info">
+                <h2>Fono Mayor</h2>
+                <span class="numero-badge">Tel: 800 400 035</span>
+                <p><strong>Qué hace:</strong> Ofrece orientación psicosocial y apoyo institucional para personas adultas mayores (SENAMA).</p>
+                <span class="categoria">Apoyo Social</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=SENAMA+Arica" target="_blank" class="btn-mapa">📍 Ver en Maps</a>
+        </div>
+
+        <div class="tarjeta" data-tags="1404 achs atencion accidentes laborales trayecto" data-categoria="salud">
+            <div class="info">
+                <h2>ACHS</h2>
+                <span class="numero-badge">Tel: 1404</span>
+                <p><strong>Qué hace:</strong> Brinda orientación médica de urgencia ante accidentes laborales o de trayecto de trabajadores.</p>
+                <span class="categoria">Salud</span>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=ACHS+Arica" target="_blank" class="btn-mapa">📍 Ver en Maps</a>
+        </div>
+
+    </main>
+
+    <section class="seccion-consejos">
+        <h2>💡 Guía y Consejos Útiles de Emergencia</h2>
+        
+        <div class="acordeon">
+            <button class="acordeon-header">1. ¿Qué hago si no tengo señal o saldo en el teléfono?</button>
+            <div class="acordeon-body">
+                <p>En Chile, por ley, <strong>todas las llamadas a números de emergencia (131, 132, 133, 134, etc.) son totalmente gratuitas</strong> y se pueden realizar incluso si tu teléfono está sin saldo, bloqueado o no cuenta con señal de tu compañía principal, ya que utilizarán la red disponible de cualquier operador.</p>
+            </div>
+        </div>
+
+        <div class="acordeon">
+            <button class="acordeon-header">2. ¿Cómo dar mi ubicación exacta si estoy desorientado?</button>
+            <div class="acordeon-body">
+                <p>Indica primero la comuna (Arica) y sector. Nombra la calle principal y el número o intersección más cercana (esquinas). Si estás en valles o carreteras, menciona hitos visibles (kilómetros, puentes, locales conocidos o tótems).</p>
+            </div>
+        </div>
+
+        <div class="acordeon">
+            <button class="acordeon-header">3. ¿Cómo activar la salida rápida de seguridad?</button>
+            <div class="acordeon-body">
+                <p>El botón rojo <strong>"Salir Rápido (Esc)"</strong> de la esquina superior derecha (o presionando la tecla <strong>Esc</strong> en tu teclado) redirige de inmediato tu navegador a Google. Úsalo discretamente si necesitas proteger tu privacidad o seguridad al instante.</p>
+            </div>
+        </div>
+
+        <div class="acordeon">
+            <button class="acordeon-header">4. ¿Qué información debo tener al llamar al SAMU (131)?</button>
+            <div class="acordeon-body">
+                <p>Informa de inmediato si el paciente está consciente, si respira con dificultad, si presenta dolor en el pecho o hemorragias graves. No cortes la línea hasta que el operador médico te dé las instrucciones de primeros auxilios.</p>
+            </div>
+        </div>
+
+        <div class="acordeon">
+            <button class="acordeon-header">5. ¿Qué hacer en caso de sismo fuerte o alerta de tsunami en Arica?</button>
+            <div class="acordeon-body">
+                <p>Mantén la calma durante el temblor. Si la tierra tiembla tan fuerte que te cuesta mantenerte en pie o si estás en la costa/playa, <strong>evacúa de inmediato a pie hacia las zonas de seguridad en cotas altas</strong> definidas por SENAPRED y no uses vehículos.</p>
+            </div>
+        </div>
+
+        <div class="acordeon">
+            <button class="acordeon-header">6. ¿Cómo reportar un robo o delito en curso a Carabineros (133)?</button>
+            <div class="acordeon-body">
+                <p>Señala con precisión si los delincuentes siguen en el lugar, si van armados, la dirección exacta de huida, descripción física y hacia qué rumbo escaparon (vehículo, dirección cardinal).</p>
+            </div>
+        </div>
+
+        <div class="acordeon">
+            <button class="acordeon-header">7. ¿Qué hacer si hueles gas o ves fuego descontrolado?</button>
+            <div class="acordeon-body">
+                <p>Aléjate de inmediato del lugar, no enciendas luces ni uses fósforos o interruptores eléctricos (podrían generar una chispa explosiva) y llama de inmediato a Bomberos al <strong>132</strong>.</p>
+            </div>
+        </div>
+
+        <div class="acordeon">
+            <button class="acordeon-header">8. ¿Dónde pedir ayuda anónima por tráfico de drogas?</button>
+            <div class="acordeon-body">
+                <p>Puedes comunicarte al fono <strong>Denuncia Seguro (*4242 o 800 802 280)</strong> o al <strong>135 de Carabineros</strong>. La información que entregues es 100% anónima y ayuda a desarticular bandas en los barrios.</p>
+            </div>
+        </div>
+
+        <div class="acordeon">
+            <button class="acordeon-header">9. ¿Qué hacer ante una crisis de salud mental o pensamientos suicidas?</button>
+            <div class="acordeon-body">
+                <p>Comunícate de manera gratuita y confidencial a la línea de prevención <strong>*4141</strong> (disponible 24/7). Serás atendido por profesionales de la salud capacitados para escucharte y guiarte sin juicios.</p>
+            </div>
+        </div>
+
+        <div class="acordeon">
+            <button class="acordeon-header">10. ¿Cómo reportar cortes masivos de luz o agua en la ciudad?</button>
+            <div class="acordeon-body">
+                <p>Ten a la mano el número de cliente que aparece en tus boletas físicas o digitales. Llama directamente a <strong>CGE (800 800 696)</strong> para electricidad o a <strong>Aguas del Altiplano (600 600 2233)</strong> para reportar roturas o cortes de suministro.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>PAEC - Portal de Asistencia y Emergencias Ciudadanas (Arica)</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
